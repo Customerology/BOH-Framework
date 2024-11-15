@@ -1,0 +1,257 @@
+@import '../../../assets/styles/variables';
+
+.application-wrapper {
+  height: 100%;
+  flex-direction: row;
+  align-items: center;
+
+  &__sidebar {
+    height: 100%;
+    position: fixed;
+    margin-top: 4rem;
+    overflow-x: scroll;
+  }
+
+  &__content_with_header {
+    height: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+  }
+
+  &__content {
+    background-color: #2c679f;
+    height: 100%;
+  }
+
+  .application-card {
+    height: 100%;
+    margin-top: 4rem;
+    width: 100%;
+  }
+
+  .application-card-new {
+    height: 100%;
+    margin-top: 4rem;
+    overflow-y: hidden;
+    position: absolute;
+    left: 15%;
+    width: 85%;
+  }
+}
+
+.application-wrapper1 {
+  position: absolute;
+  height: calc(100vh - 4rem);
+  width: 40px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  &__sidebar1 {
+    width: 15%;
+    position: fixed;
+    margin-top: 1rem;
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  .application-card {
+    height: 100%;
+    margin-top: 4rem;
+    width: 100%;
+  }
+
+  .application-card-new {
+    height: 100%;
+    margin-top: 4rem;
+    overflow-y: hidden;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.nav-list-open {
+  width: 15%;
+}
+
+.navbar {
+  height: 4rem;
+}
+
+.application-header {
+  padding: 0 5px 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .companies-information_button {
+    margin: 0 15px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #1ca0f1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+  }
+
+  &_companies_location_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    border: 1px solid black;
+    border-radius: 12px;
+    gap: 5px;
+    padding: 6px;
+    margin: 5px;
+    background-color: white;
+  }
+
+  &__user-name {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 14px;
+    cursor: pointer;
+    color: black;
+    bottom: 3px;
+    position: relative;
+    top: 0px;
+  }
+
+  &__user-email {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 14px;
+    cursor: pointer;
+  }
+}
+
+::ng-deep .application-header {
+  &__menu {
+    mat-ripple mat-mdc-menu-ripple {
+      display: none !important;
+    }
+
+    .mdc-text-field--filled .mdc-line-ripple::before {
+      border-bottom-color: transparent;
+    }
+
+    .mdc-text-field--filled .mdc-line-ripple::after {
+      border-bottom-color: #2c679f;
+    }
+
+    &.mat-mdc-menu-panel.mat-mdc-menu-panel {
+      margin-top: 20px;
+      min-width: 345px;
+      width: 345px;
+      border-radius: 10px;
+    }
+
+    &-item.mat-mdc-menu-item {
+      &:hover {
+        background-color: #fff;
+      }
+    }
+  }
+
+  &__form {
+    &-field {
+      margin: 34px 0 5px 0;
+    }
+
+    .mat-mdc-text-field-wrapper {
+      .mat-mdc-form-field-flex {
+        .mat-mdc-floating-label {
+          font-family: PoppinsRegular, 'Helvetica Neue', sans-serif;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 18px;
+          color: #000;
+          transition: none;
+          transform: none;
+          top: -22px;
+        }
+      }
+    }
+
+    .mat-mdc-form-field-input-control.mat-mdc-form-field-input-control {
+      font-family: PoppinsRegular, 'Helvetica Neue', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .mdc-list-item__primary-text,
+    .mat-mdc-form-field,
+    .mat-mdc-form-field-infix {
+      width: 100%;
+    }
+  }
+}
+
+.side-nav-button {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.fa-bars {
+  cursor: pointer;
+}
+
+.module_name {
+  color: white;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.application-sidebar {
+  background-color: #2c679f;
+  height: 4rem;
+
+  &__image_wrapper {
+    height: 0rem;
+
+    &__image {
+      width: 100%;
+      max-width: 190px;
+      margin-left: 5px;
+    }
+  }
+}
+
+.application-header_companies_location_wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .application-header_companies_location_wrapper {
+    margin-top: 5px;
+  }
+}
+
+.module_name {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .module_name {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .module_name {
+    font-size: 12px;
+  }
+}

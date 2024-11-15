@@ -1,0 +1,41 @@
+/**
+Connect fonts
+ */
+
+@font-face {
+  font-family: 'PoppinsLight';
+  src: url('../fonts/poppins/poppins-light-webfont.eot');
+  src: url('../fonts/poppins/poppins-light-webfont.eot?#iefix')
+      format('embedded-opentype'),
+    url('../fonts/poppins/poppins-light-webfont.woff') format('woff'),
+    url('../fonts/poppins/poppins-light-webfont.ttf') format('truetype'),
+    url('../fonts/poppins/poppins-light-webfont.svg#PoppinsLight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PoppinsRegular';
+  src: url('../fonts/poppins/poppins-regular-webfont.eot');
+  src: url('../fonts/poppins/poppins-regular-webfont.eot?#iefix')
+      format('embedded-opentype'),
+    url('../fonts/poppins/poppins-regular-webfont.woff') format('woff'),
+    url('../fonts/poppins/poppins-regular-webfont.ttf') format('truetype'),
+    url('../fonts/poppins/poppins-regular-webfont.svg#PoppinsRegular')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PoppinsSemibold';
+  src: url('../fonts/poppins/poppins-semibold-webfont.eot');
+  src: url('../fonts/poppins/poppins-semibold-webfont.eot?#iefix')
+      format('embedded-opentype'),
+    url('../fonts/poppins/poppins-semibold-webfont.woff') format('woff'),
+    url('../fonts/poppins/poppins-semibold-webfont.ttf') format('truetype'),
+    url('../fonts/poppins/poppins-semibold-webfont.svg#PoppinsSemibold')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

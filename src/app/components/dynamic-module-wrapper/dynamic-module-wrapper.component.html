@@ -1,0 +1,4 @@
+<app-loading-overlay></app-loading-overlay>
+<ng-container *ngIf="activeURL$ | async as activeUrl">
+  <app-i-frame-loader [activeUrl]="activeUrl"></app-i-frame-loader>
+</ng-container>

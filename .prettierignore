@@ -1,0 +1,6 @@
+package.json
+package-lock.json
+e2e
+dist
+coverage
+node_modules

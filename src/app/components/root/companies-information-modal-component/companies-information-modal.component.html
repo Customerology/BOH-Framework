@@ -1,0 +1,421 @@
+<mat-menu class="companies-menu">
+  <div
+    tabindex="{0}"
+    class="companies-menu_wrapper"
+    (click)="$event.stopPropagation();"
+  >
+    <div
+      class="companies-menu_background"
+      [ngStyle]="{ 'background-image': 'url(' + companyBannerImageUrl + ')'}"
+    >
+      <div class="companies-menu_background_info">
+        <div
+          class="company_logo"
+          [ngStyle]="{ 'background-image': 'url(' + companyLogoImageUrl + ')'}"
+        ></div>
+        <div class="company_info">
+          <h2>{{enterprise?.name}}</h2>
+          <p>{{enterprise?.description}}</p>
+        </div>
+      </div>
+
+      <div class="companies-menu_edit_buttons" [class.edit-mode]="editMode">
+        <button class="read_mode button" (click)="toggleEditMode()">
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g filter="url(#filter0_d_3707_1766)">
+              <rect
+                x="5"
+                y="3"
+                width="38"
+                height="38"
+                rx="19"
+                fill="white"
+                shape-rendering="crispEdges"
+              />
+              <path
+                d="M32.4807 16.1078L29.8918 13.5201C29.1984 12.8271 28.0759 12.8264 27.3823 13.5194L17.503 23.3996C17.163 23.7396 16.903 24.1499 16.7403 24.602L15.078 29.2279C14.9047 29.7106 15.0253 30.2496 15.388 30.6124C15.7505 30.9748 16.2902 31.0954 16.7727 30.9217L21.3984 29.2591C21.8505 29.0967 22.2612 28.8361 22.6009 28.4967L30.3642 20.7337L30.3646 20.734L32.4813 18.6162C33.1716 17.9235 33.1744 16.8017 32.4807 16.1078ZM18.3806 24.2772L26.5204 16.1366L27.9726 17.5887L19.7074 25.8532L18.2628 24.409C18.3006 24.3638 18.3388 24.319 18.3806 24.2772ZM20.9786 28.0909L18.0312 29.1503L16.8497 27.9688L17.9088 25.022C17.9164 25.0004 17.927 24.9801 17.9351 24.9589L21.0414 28.0645C21.0202 28.0731 20.9998 28.0834 20.9786 28.0909ZM21.7232 27.6192C21.6814 27.6607 21.6365 27.6991 21.5914 27.737L20.1461 26.292L28.4114 18.0274L29.8633 19.4792L21.7232 27.6192ZM31.6028 17.7396L30.3021 19.0404L26.9592 15.6978L28.2602 14.397C28.4681 14.19 28.8054 14.1897 29.0142 14.3979L31.6028 16.9853C31.811 17.1929 31.8113 17.5302 31.6019 17.7401L31.6028 17.7396Z"
+                fill="black"
+              />
+            </g>
+            <defs>
+              <filter
+                id="filter0_d_3707_1766"
+                x="0"
+                y="0"
+                width="48"
+                height="48"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="2" />
+                <feGaussianBlur stdDeviation="2.5" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_3707_1766"
+                />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow_3707_1766"
+                  result="shape"
+                />
+              </filter>
+            </defs>
+          </svg>
+        </button>
+
+        <button class="edit_button save button" (click)="saveForm()">+</button>
+        <button class="edit_button close button" (click)="toggleEditMode()">
+          -
+        </button>
+      </div>
+    </div>
+    <div class="companies-menu_form_wrapper">
+      <form [formGroup]="formGroup" class="companies-menu_form">
+        <div class="form-row">
+          <div class="form-row_item">
+            <mat-form-field
+              class="companies-form-field"
+              floatLabel="always"
+              subscriptSizing="dynamic"
+              [class.edit-mode]="editMode"
+            >
+              <mat-label>
+                <div class="label_wrapper">
+                  <div class="icon">
+                    <svg
+                      width="12"
+                      height="16"
+                      viewBox="0 0 12 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6 0C2.685 0 0 2.60364 0 5.81818C0 10.9673 6 16 6 16C6 16 12 10.9673 12 5.81818C12 2.60364 9.315 0 6 0ZM6 8C4.755 8 3.75 7.02545 3.75 5.81818C3.75 4.61091 4.755 3.63636 6 3.63636C7.245 3.63636 8.25 4.61091 8.25 5.81818C8.25 7.02545 7.245 8 6 8Z"
+                        fill="#333333"
+                      />
+                    </svg>
+                  </div>
+                  <span class="text">Enterprise Address</span>
+                </div>
+              </mat-label>
+              <textarea
+                matInput
+                cdkTextareaAutosize
+                placeholder="Enter enterprise address"
+                formControlName="address"
+                rows="2"
+                class="form-field"
+                [readonly]="!editMode"
+              ></textarea>
+            </mat-form-field>
+          </div>
+          <div class="form-row_item">
+            <mat-form-field
+              class="companies-form-field"
+              floatLabel="always"
+              subscriptSizing="dynamic"
+              [class.edit-mode]="editMode"
+            >
+              <mat-label>
+                <div class="label_wrapper">
+                  <div class="icon">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.00470874 2.03333C-0.0760033 0.889888 0.892245 0 2.03617 0H4.48485C5.07205 0 5.60165 0.353808 5.8275 0.89696L6.85144 3.35957C7.10088 3.95946 6.92384 4.65235 6.41744 5.05834L5.77915 5.57003C5.4943 5.79839 5.39746 6.19215 5.56635 6.51584C6.43432 8.17928 7.71712 9.59104 9.27712 10.6134C9.6064 10.8291 10.0414 10.7433 10.287 10.4356L10.9522 9.6024C11.3573 9.09496 12.0487 8.9176 12.6474 9.16752L15.1049 10.1936C15.647 10.4199 16 10.9506 16 11.539V14C16 15.1463 15.0791 16.0764 13.9381 15.9953C6.64168 15.4762 0.521973 9.36136 0.00470874 2.03333Z"
+                        fill="#333333"
+                      />
+                    </svg>
+                  </div>
+                  <span class="text">Phone Number</span>
+                </div>
+              </mat-label>
+
+              <input
+                mask="(000) 000-0000"
+                matInput
+                placeholder="Enter phone number"
+                formControlName="phoneNumber"
+                class="form-field"
+                [readonly]="!editMode"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-row_item">
+            <mat-form-field
+              class="companies-form-field"
+              floatLabel="always"
+              subscriptSizing="dynamic"
+              [class.edit-mode]="editMode"
+            >
+              <mat-label>
+                <div class="label_wrapper">
+                  <div class="icon">
+                    <svg
+                      width="17"
+                      height="14"
+                      viewBox="0 0 17 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.451312 1.15085C0.862477 0.604435 1.51618 0.25 2.25 0.25H14.25C14.9838 0.25 15.6375 0.604435 16.0487 1.15085L8.25 6.82263L0.451312 1.15085Z"
+                        fill="#333333"
+                      />
+                      <path
+                        d="M0 2.67737V11.5C0 12.7392 1.01079 13.75 2.25 13.75H14.25C15.4892 13.75 16.5 12.7392 16.5 11.5V2.67737L9.13223 8.03575C8.60625 8.41825 7.89375 8.41825 7.36777 8.03575L0 2.67737Z"
+                        fill="#333333"
+                      />
+                    </svg>
+                  </div>
+                  <span class="text">Email Address</span>
+                </div>
+              </mat-label>
+
+              <input
+                matInput
+                placeholder="Enter email address"
+                formControlName="email"
+                class="form-field"
+                [readonly]="!editMode"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="form-row_item">
+            <mat-form-field
+              class="companies-form-field"
+              floatLabel="always"
+              subscriptSizing="dynamic"
+              [class.edit-mode]="editMode"
+            >
+              <mat-label>
+                <div class="label_wrapper">
+                  <div class="icon">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M13.3357 -0.000732422H11.8157C10.0717 -0.000732422 9.15164 0.919272 9.15164 2.66328V4.18329C9.15164 5.9273 10.0717 6.8473 11.8157 6.8473H13.3357C15.0797 6.8473 15.9997 5.9273 15.9997 4.18329V2.66328C15.9997 0.919272 15.0797 -0.000732422 13.3357 -0.000732422Z"
+                        fill="#333333"
+                      />
+                      <path
+                        d="M4.19202 9.14307H2.67201C0.920005 9.14307 0 10.0631 0 11.8071V13.3271C0 15.0791 0.920004 15.9991 2.66401 15.9991H4.18402C5.92803 15.9991 6.84803 15.0791 6.84803 13.3351V11.8151C6.85603 10.0631 5.93603 9.14307 4.19202 9.14307Z"
+                        fill="#333333"
+                      />
+                      <path
+                        d="M3.43202 6.8633C5.32747 6.8633 6.86403 5.32673 6.86403 3.43128C6.86403 1.53584 5.32747 -0.000732422 3.43202 -0.000732422C1.53657 -0.000732422 0 1.53584 0 3.43128C0 5.32673 1.53657 6.8633 3.43202 6.8633Z"
+                        fill="#333333"
+                      />
+                      <path
+                        d="M12.568 16.0009C14.4634 16.0009 16 14.4643 16 12.5689C16 10.6734 14.4634 9.13683 12.568 9.13683C10.6725 9.13683 9.13596 10.6734 9.13596 12.5689C9.13596 14.4643 10.6725 16.0009 12.568 16.0009Z"
+                        fill="#333333"
+                      />
+                    </svg>
+                  </div>
+                  <span class="text">Category</span>
+                </div>
+              </mat-label>
+
+              <mat-select
+                placeholder="Choose categories"
+                formControlName="category"
+                multiple
+                class="form-field"
+                [disabled]="!editMode"
+              >
+                <mat-option
+                  *ngFor="let category of categoriesList"
+                  [value]="category.id"
+                >
+                  {{category.title}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-row_item">
+            <mat-form-field
+              class="companies-form-field"
+              floatLabel="always"
+              subscriptSizing="dynamic"
+              [class.edit-mode]="editMode"
+            >
+              <mat-label>
+                <div class="label_wrapper">
+                  <div class="icon">
+                    <svg
+                      width="17"
+                      height="16"
+                      viewBox="0 0 17 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8.5 0C4.08172 0 0.5 3.58172 0.5 8C0.5 12.4183 4.08172 16 8.5 16C12.9183 16 16.5 12.4183 16.5 8C16.5 3.58172 12.9183 0 8.5 0ZM13.5711 4.5625H12.1128C11.9451 3.85897 11.7276 3.21209 11.4694 2.64019C11.9627 2.91444 12.4209 3.25884 12.831 3.66897C13.1082 3.94616 13.3552 4.24544 13.5711 4.5625ZM14.625 8C14.625 8.53463 14.5565 9.05866 14.4246 9.5625H12.4235C12.4735 9.05713 12.5 8.53478 12.5 8C12.5 7.46522 12.4735 6.94287 12.4235 6.4375H14.4246C14.5565 6.94134 14.625 7.46537 14.625 8ZM8.5 14.125C8.3375 14.125 7.84225 13.8056 7.34863 12.8183C7.14416 12.4094 6.96869 11.9435 6.82513 11.4375H10.1748C10.0313 11.9435 9.85584 12.4094 9.65134 12.8183C9.15775 13.8056 8.6625 14.125 8.5 14.125ZM6.46291 9.5625C6.40519 9.05478 6.375 8.53034 6.375 8C6.375 7.46966 6.40519 6.94522 6.46291 6.4375H10.5371C10.5948 6.94522 10.625 7.46966 10.625 8C10.625 8.53034 10.5948 9.05478 10.5371 9.5625H6.46291ZM2.375 8C2.375 7.46537 2.44347 6.94134 2.57544 6.4375H4.5765C4.52647 6.94287 4.5 7.46522 4.5 8C4.5 8.53478 4.52647 9.05713 4.5765 9.5625H2.57544C2.44347 9.05866 2.375 8.53463 2.375 8ZM8.5 1.875C8.6625 1.875 9.15775 2.19441 9.65137 3.18166C9.85584 3.59063 10.0313 4.05647 10.1749 4.5625H6.82513C6.96869 4.0565 7.14413 3.59063 7.34863 3.18166C7.84225 2.19441 8.3375 1.875 8.5 1.875ZM5.53059 2.64019C5.27234 3.21209 5.05491 3.85894 4.88725 4.5625H3.42891C3.64481 4.24544 3.89178 3.94616 4.16897 3.66897C4.57909 3.25884 5.03728 2.91444 5.53059 2.64019ZM3.42891 11.4375H4.88725C5.05491 12.141 5.27238 12.7879 5.53059 13.3598C5.03728 13.0856 4.57906 12.7412 4.16897 12.331C3.89178 12.0538 3.64478 11.7546 3.42891 11.4375ZM11.4694 13.3598C11.7277 12.7879 11.9451 12.1411 12.1128 11.4375H13.5711C13.3552 11.7546 13.1082 12.0538 12.831 12.331C12.4209 12.7412 11.9627 13.0856 11.4694 13.3598Z"
+                        fill="#333333"
+                      />
+                    </svg>
+                  </div>
+                  <span class="text">Websites</span>
+                </div>
+              </mat-label>
+
+              <input
+                matInput
+                placeholder="Enter websites"
+                formControlName="websites"
+                class="form-field"
+                [class.hide]="!editMode"
+              />
+              <div *ngIf="!editMode">
+                <p class="social_link_wrapper">
+                  <a
+                    class="social_link"
+                    href="//{{formGroup.controls['websites'].value}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {{formGroup.controls['websites'].value}}
+                  </a>
+                </p>
+              </div>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row_item half_width">
+            <div class="social_wrapper">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM9.76562 6.64375L9.675 7.84062H8.44687V11.9969H6.89687V7.84062H6.06875V6.64375H6.89687V5.84062C6.89687 5.4875 6.90625 4.94063 7.1625 4.6C7.43437 4.24063 7.80625 3.99687 8.44687 3.99687C9.49062 3.99687 9.92813 4.14688 9.92813 4.14688L9.72188 5.37187C9.72188 5.37187 9.37812 5.27188 9.05625 5.27188C8.73437 5.27188 8.44687 5.3875 8.44687 5.70938V6.64375H9.76562Z"
+                  fill="#6C6AE2"
+                />
+              </svg>
+              <mat-form-field
+                class="companies-form-field"
+                floatLabel="always"
+                subscriptSizing="dynamic"
+                [class.edit-mode]="editMode"
+              >
+                <input
+                  matInput
+                  placeholder="Enter Facebook Url"
+                  formControlName="facebookUrl"
+                  class="form-field"
+                  [class.hide]="!editMode"
+                />
+                <div
+                  *ngIf="!editMode && formGroup.controls['facebookUrl'].value?.length > 0"
+                >
+                  <p class="social_link_wrapper">
+                    <a
+                      class="social_link"
+                      href="{{formGroup.controls['facebookUrl'].value}}"
+                      target="_blank"
+                    >
+                      Facebook
+                    </a>
+                  </p>
+                </div>
+              </mat-form-field>
+            </div>
+
+            <div class="social_wrapper">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 9.40625C8.775 9.40625 9.40938 8.775 9.40938 7.99687C9.40938 7.69062 9.30937 7.40625 9.14375 7.175C8.8875 6.82188 8.47188 6.5875 8.00313 6.5875C7.53437 6.5875 7.11875 6.81875 6.8625 7.175C6.69687 7.40625 6.59687 7.69062 6.59687 7.99687C6.59375 8.775 7.225 9.40625 8 9.40625Z"
+                  fill="#ED3D3D"
+                />
+                <path
+                  d="M11.075 6.27812V4.92188H10.9L9.71875 4.925L9.725 6.28125L11.075 6.27812Z"
+                  fill="#ED3D3D"
+                />
+                <path
+                  d="M10.1875 8C10.1875 9.20625 9.20625 10.1875 8 10.1875C6.79375 10.1875 5.8125 9.20625 5.8125 8C5.8125 7.70937 5.87187 7.43125 5.975 7.17812H4.78125V10.4531C4.78125 10.875 5.125 11.2188 5.54688 11.2188H10.4531C10.875 11.2188 11.2188 10.875 11.2188 10.4531V7.17812H10.025C10.1312 7.43125 10.1875 7.70937 10.1875 8Z"
+                  fill="#ED3D3D"
+                />
+                <path
+                  d="M8 0C3.58125 0 0 3.58125 0 8C0 12.4187 3.58125 16 8 16C12.4187 16 16 12.4187 16 8C16 3.58125 12.4187 0 8 0ZM12 10.4531C12 11.3062 11.3062 12 10.4531 12H5.54688C4.69375 12 4 11.3062 4 10.4531V5.54375C4 4.69062 4.69375 3.99687 5.54688 3.99687H10.4531C11.3062 3.99687 12 4.69062 12 5.54375V10.4531Z"
+                  fill="#ED3D3D"
+                />
+              </svg>
+              <mat-form-field
+                class="companies-form-field"
+                floatLabel="always"
+                subscriptSizing="dynamic"
+                [class.edit-mode]="editMode"
+              >
+                <input
+                  matInput
+                  placeholder="Enter Instagram Url"
+                  formControlName="instagramUrl"
+                  class="form-field"
+                  [class.hide]="!editMode"
+                />
+                <div
+                  *ngIf="!editMode && formGroup.controls['instagramUrl'].value?.length > 0"
+                >
+                  <p class="social_link_wrapper">
+                    <a
+                      class="social_link"
+                      href="{{formGroup.controls['instagramUrl'].value}}"
+                      target="_blank"
+                    >
+                      Instagram
+                    </a>
+                  </p>
+                </div>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-menu>

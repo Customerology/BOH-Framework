@@ -1,0 +1,196 @@
+<nav
+  class="navbar navbar-expand px-2 fixed-top"
+  style="background-color: #2c679f"
+>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md -3 text-center">
+        <div class="side-nav-button p-2 me-3 text-light" style="left: 0px">
+          <!-- eslint-disable-next-line-->
+          <i class="fa-solid fa-bars me-2" (click)="SideNavToggle()"></i>
+          <img
+            src="../../assets/images/company-logo.svg"
+            alt="Company Logo"
+            class="application-sidebar__image_wrapper__image"
+          />
+        </div>
+      </div>
+
+      <div class="module_name col-md -4 mt-2">
+        {{ currentModuleName$ | async }}
+      </div>
+    </div>
+  </div>
+  <!-- eslint-disable-next-line-->
+  <div
+    class="side-nav-button p-2 me-3 text-light"
+    (click)="SideNavToggle()"
+    style="display: contents"
+  >
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-11">
+          <div class="application-header">
+            <button
+              class="companies-information_button"
+              [matMenuTriggerFor]="compniesMenu.menu"
+            >
+              <svg
+                width="8"
+                height="18"
+                viewBox="0 0 12 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4.62325 7.89115C2.96899 8.67796 1.56201 10.0348 0.153994 12.0185C-0.0468176 12.3014 -0.0549033 12.4733 0.15138 12.6253C0.296409 12.7322 0.380682 12.698 0.5919 12.4679C0.620174 12.4369 0.620174 12.4369 0.649086 12.4049C0.831686 12.203 0.978781 12.0317 1.29299 11.6591C2.33119 10.4282 2.8383 9.92148 3.62642 9.4581C4.30844 9.05712 4.90781 9.64641 4.79368 10.4005C4.76167 10.6122 4.7065 10.7685 4.5644 11.104C4.50788 11.2374 4.48403 11.2955 4.45753 11.3666C4.20139 12.0541 3.98564 12.6276 3.53355 13.8254L3.51192 13.8827C3.37523 14.2448 3.37523 14.2448 3.23866 14.6069C2.64658 16.178 2.2873 17.1414 1.9166 18.1603L1.89486 18.22C1.79538 18.4931 1.74853 18.622 1.69675 18.7653C1.27199 19.9414 1.02908 20.7055 0.844324 21.5183C0.815477 21.6448 0.815476 21.6448 0.786221 21.7733C0.682129 22.2331 0.626423 22.5293 0.59528 22.8338C0.541436 23.3604 0.584733 23.7915 0.7468 24.1539C0.930191 24.564 1.32424 24.8573 1.77384 24.9239C2.5228 25.0349 3.24547 25.027 3.86443 24.8833C4.21277 24.8024 4.55742 24.6965 4.89557 24.5668C5.87467 24.1909 6.81792 23.6045 7.73151 22.8292C8.53089 22.1491 9.28724 21.3205 10.0802 20.2906C10.1493 20.2015 10.1493 20.2015 10.2182 20.1124C10.4577 19.8006 10.5751 19.5981 10.6189 19.3842C10.6665 19.1519 10.4742 18.9166 10.3205 18.9953C10.2446 19.0342 10.1651 19.1148 10.044 19.2707C9.95744 19.3842 9.91035 19.4448 9.86323 19.4993C9.67518 19.7167 9.47661 19.9392 9.26148 20.1743C8.90679 20.5617 8.54641 20.9407 8.02372 21.4803C7.75751 21.7552 7.42271 21.9955 7.06275 22.1761C6.48662 22.4651 5.96689 22.1008 6.02931 21.4488C6.07049 21.0184 6.17263 20.5734 6.32534 20.1431C6.65893 19.2028 6.93168 18.4426 7.53511 16.7672C7.7968 16.0406 7.9098 15.7267 8.05092 15.3338C8.46935 14.1694 8.80336 13.2321 9.12116 12.3276C9.51375 11.2104 9.73554 10.3776 9.83823 9.51762C9.91577 8.86896 9.73901 8.24861 9.3359 7.8221C8.88894 7.34929 8.2532 7.13149 7.46144 7.14104C6.5854 7.15168 5.56352 7.44392 4.62325 7.89115ZM10.6196 0.179899C9.04531 -0.445465 7.15623 0.628897 6.83992 2.33054C6.61056 3.56387 7.06182 4.62869 7.98288 5.07469C9.8087 5.95877 11.9999 4.54218 12 2.47745C12.0001 1.32887 11.5196 0.537464 10.6196 0.179899Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+            <app-companies-information-modal
+              [enterprise]="form.controls['enterprise'].value"
+              #compniesMenu="menuInOtherComponent"
+            ></app-companies-information-modal>
+
+            <div
+              *ngIf="show"
+              class="application-header_companies_location_wrapper"
+              [matMenuTriggerFor]="enterpriseMenu"
+            >
+              <!-- eslint-disable-next-line-->
+              <label style="font-size: 16px; color: black">Enterprise:</label>
+              <div class="application-header__user-name">
+                {{enterpriseItemName$ | async }} &nbsp;
+                <i class="fa fa-caret-down"></i>
+              </div>
+            </div>
+            <div
+              *ngIf="hide"
+              class="application-header_companies_location_wrapper"
+              [matMenuTriggerFor]="enterpriseMenu"
+            >
+              <!-- eslint-disable-next-line-->
+              <label style="font-size: 16px; color: black">Enterprise:</label>
+              <div
+                class="application-header__user-name"
+                style="display: inline-block; vertical-align: middle"
+                [matMenuTriggerFor]="enterpriseMenu"
+              >
+                {{enterpriseItemName$ | async }}&nbsp;
+              </div>
+              <!-- eslint-disable-next-line-->
+              <label style="font-size: 16px; color: black">Location:</label>
+              <div
+                class="application-header__user-name"
+                style="display: inline-block; vertical-align: middle"
+              >
+                {{ enterpriseLocationItemName$ | async }} &nbsp;
+                <i class="fa fa-caret-down"></i>
+              </div>
+            </div>
+            <mat-menu
+              #enterpriseMenu="matMenu"
+              class="application-header__menu"
+            >
+              <form
+                class="application-header__form"
+                [formGroup]="form"
+                [tabindex]="1"
+                (click)="$event.stopPropagation();"
+              >
+                <div
+                  mat-menu-item
+                  class="application-header__menu-item"
+                  [disableRipple]="true"
+                >
+                  <mat-form-field
+                    class="application-header__form-field"
+                    subscriptSizing="dynamic"
+                  >
+                    <mat-label>Enterprise</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      formControlName="enterprise"
+                      [matAutocomplete]="autocompleteEnterprise"
+                      #triggerEnterprise="matAutocompleteTrigger"
+                      (keydown.escape)="triggerEnterprise.closePanel()"
+                    />
+                    <mat-autocomplete
+                      #autocompleteEnterprise="matAutocomplete"
+                      [displayWith]="displayFn"
+                      (optionSelected)="onEnterpriseSelectionChange($event.option.value);"
+                    >
+                      <mat-option
+                        *ngFor="let option of enterprises$ | async"
+                        [value]="option"
+                      >
+                        {{option.name}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </div>
+
+                <div
+                  mat-menu-item
+                  class="application-header__menu-item"
+                  [disableRipple]="true"
+                >
+                  <mat-form-field
+                    class="application-header__form-field"
+                    subscriptSizing="dynamic"
+                  >
+                    <mat-label>Location</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      formControlName="location"
+                      [matAutocomplete]="autocompleteLocation"
+                      #triggerLocation="matAutocompleteTrigger"
+                      (keydown.escape)="triggerLocation.closePanel()"
+                    />
+                    <mat-autocomplete
+                      #autocompleteLocation="matAutocomplete"
+                      [displayWith]="displayFn"
+                      (optionSelected)="onLocationSelectionChange($event.option.value);"
+                    >
+                      <mat-option
+                        *ngFor="let option of enterpriseLocation$ | async"
+                        [value]="option"
+                      >
+                        {{option.name}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </div>
+              </form>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="application-wrapper1" [ngClass]="{'nav-list-open' : menuStatus}">
+  <div
+    class="application-wrapper1__sidebar1"
+    [ngClass]="{'nav-list-open' : menuStatus}"
+  >
+    <app-sidebar [sideNavStatus]="menuStatus"></app-sidebar>
+  </div>
+</div>
+
+<div class="application-wrapper">
+  <div class="application-wrapper__content_with_header">
+    <div class="application-wrapper__content">
+      <div class="container"></div>
+      <div
+        [className]="menuStatus ? 'application-card' : 'application-card-new'"
+      >
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

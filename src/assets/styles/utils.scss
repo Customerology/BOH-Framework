@@ -1,0 +1,21 @@
+/**
+Utils classes
+ */
+
+.w {
+  &-100 {
+    width: 100%;
+  }
+}
+
+.d {
+  &-block {
+    display: block !important;
+  }
+}
+
+.ta {
+  &-center {
+    text-align: center;
+  }
+}

@@ -1,0 +1,10 @@
+export const APPLICATION_USER_OBJECT_NAME = 'CUSTOMEROLOGY_USER_OBJECT';
+export const APPLICATION_SELECTED_ENTERPRISE =
+  'CUSTOMEROLOGY_SELECTED_ENTERPRISE';
+export const APPLICATION_SELECTED_LOCATION = 'CUSTOMEROLOGY_SELECTED_LOCATION';
+export const APPLICATION_SIDEBAR_ACTIVE_ITEM_INDEX = 0;
+
+export const SystemException = {
+  apiKeyIsNotProvided: 'Api Key not provided.',
+  apiKeyIsNotValid: 'Api Key not valid.'
+};

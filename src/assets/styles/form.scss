@@ -1,0 +1,60 @@
+/**
+Form fields styling
+ */
+
+mat-form-field {
+  margin: 15px 0;
+
+  .mat-mdc-text-field-wrapper {
+    overflow: visible;
+    background-color: #ffffff;
+
+    .mat-mdc-form-field-flex .mat-mdc-floating-label {
+      top: 0;
+      left: -10px;
+      font-size: 13px;
+      color: rgba(21, 21, 21, 0.5);
+    }
+
+    height: 44px;
+  }
+
+  .mdc-text-field {
+    padding: 0 10px;
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: transparent;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled)
+    .mdc-line-ripple::before {
+    border-bottom-color: transparent;
+  }
+
+  .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined)
+    .mat-mdc-form-field-infix {
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+
+  .mat-mdc-form-field-infix {
+    font-size: 12px;
+  }
+
+  .mat-mdc-form-field-subscript-wrapper {
+    left: -2px;
+
+    .mat-mdc-form-field-error-wrapper {
+      padding: 0;
+      font-size: 11px;
+    }
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled):hover
+    .mdc-line-ripple::before {
+    border-bottom-color: #2c679f;
+  }
+}

@@ -1,0 +1,354 @@
+// ==============================
+// Font size mixin
+// ==============================
+
+//  default font scale bounding
+$font-lock-min: 400px !default;
+$font-lock-max: 1000px !default;
+
+//  font-size
+@mixin font-size(
+  $min,
+  // font-size
+  $max: null,
+  // optional maximum font size
+  $lock-min: $font-lock-min,
+  // optional minimum viewport width
+  $lock-max: $font-lock-max // optional maximum viewport width
+) {
+  & {
+    font-size: $min;
+  }
+  @if $max {
+    @media (min-width: $lock-min) and (max-width: $lock-max) {
+      & {
+        font-size: calc(
+          #{$min} + #{num($max) - num($min)} * (100vw - #{$lock-min}) / #{num(
+              $lock-max
+            ) - num($lock-min)}
+        );
+      }
+    }
+    @media (min-width: $lock-max) {
+      & {
+        font-size: $max;
+      }
+    }
+  }
+}
+
+//  strip units helper function
+@function num($input) {
+  @return $input/($input * 0 + 1);
+}
+
+::ng-deep
+  .cdk-overlay-pane
+  .mat-mdc-menu-panel.mat-mdc-menu-panel.companies-menu {
+  margin-top: 15px;
+
+  min-width: 50vw;
+  max-width: 785px;
+  border-radius: 10px;
+
+  .mat-mdc-menu-content {
+    padding: 0;
+  }
+}
+
+.companies-menu {
+  &_wrapper {
+  }
+
+  &_background {
+    width: 100%;
+    height: 220px;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+
+    &_info {
+      padding: 10px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 80%;
+      border-top-left-radius: 80px;
+      border-bottom-left-radius: 80px;
+
+      .company_logo {
+        margin-right: 20px;
+        width: 125px;
+        height: 125px;
+        border-radius: 50%;
+        border: 3px solid #696868;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      .company_info {
+        width: calc(100% - 145px);
+
+        h2 {
+          margin: 0;
+          font-family: PoppinsSemibold, 'Helvetica Neue', sans-serif;
+          font-style: normal;
+          font-weight: 700;
+          @include font-size(24px, 32px, 1024px, 1400px);
+          line-height: 1.5em;
+          color: #333;
+        }
+
+        p {
+          margin: 0;
+          font-family: PoppinsRegular, 'Helvetica Neue', sans-serif;
+          font-style: normal;
+          font-weight: 400;
+          @include font-size(14px, 16px, 1024px, 1400px);
+          line-height: 1.2em;
+
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+
+  &_edit_buttons {
+    position: absolute;
+    right: 5%;
+    bottom: 0;
+    transform: translate(50%, 50%);
+
+    .button {
+      border: 0;
+      background-color: transparent;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+
+      &.save {
+        margin-bottom: 15px;
+        background-color: #4ed753;
+      }
+
+      &.close {
+        background-color: #f24822;
+      }
+
+      &.edit_button {
+        display: none;
+      }
+    }
+
+    &.edit-mode {
+      transform: translate(50%, calc(100% - 24px));
+
+      .read_mode {
+        display: none;
+      }
+
+      .edit_button {
+        display: block;
+      }
+    }
+  }
+
+  &_form_wrapper {
+    padding: 75px 5% 0 5%;
+    width: 100%;
+
+    .companies-menu_form {
+      margin-top: 50px;
+    }
+
+    .form-row {
+      margin-bottom: 35px;
+      padding-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #efefef;
+
+      &_item {
+        flex-basis: calc(50% - 20px);
+
+        &.half_width {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .social_wrapper {
+            flex-basis: calc(50% - 15px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .companies-form-field {
+              max-width: 125px;
+            }
+          }
+        }
+
+        .social_link_wrapper {
+          margin: 0;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+
+        .social_link {
+          font-family: PoppinsRegular, 'Helvetica Neue', sans-serif;
+          font-style: normal;
+          font-weight: 400;
+          @include font-size(12px, 16px, 1024px, 1400px);
+          line-height: 24px;
+          color: #333;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.companies-form-field {
+  margin: 0;
+  width: 100%;
+
+  .label_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .icon {
+      margin-right: 15px;
+    }
+
+    .text {
+      font-family: PoppinsRegular, 'Helvetica Neue', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      @include font-size(14px, 16px, 1024px, 1400px);
+      line-height: 24px;
+      color: #b3b3b3;
+    }
+  }
+
+  .mat-mdc-text-field-wrapper {
+    height: 24px;
+    line-height: 24px;
+  }
+
+  textarea {
+    resize: none;
+    max-height: 40px;
+  }
+
+  .form-field {
+    font-family: PoppinsRegular, 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    @include font-size(14px, 16px, 1024px, 1400px);
+    line-height: 1.2em;
+    color: #333333;
+
+    &.hide {
+      display: none;
+    }
+  }
+}
+
+::ng-deep .companies-form-field .mat-mdc-form-field-infix {
+  padding: 10px 0 !important;
+  min-height: 24px !important;
+}
+
+::ng-deep mat-form-field.companies-form-field .mat-mdc-text-field-wrapper {
+  height: auto;
+}
+
+::ng-deep {
+  .mat-form-field-appearance-fill.companies-form-field
+    .mat-mdc-select-arrow-wrapper {
+    transform: none;
+  }
+
+  .companies-form-field .mat-mdc-select-arrow-wrapper {
+    height: 100%;
+  }
+
+  .mat-form-field-appearance-fill.companies-form-field
+    .mat-mdc-select-disabled
+    .mat-mdc-select-value {
+    color: #333333;
+  }
+
+  .mat-mdc-form-field.companies-form-field
+    .mat-mdc-select.mat-mdc-select-disabled
+    .mat-mdc-select-arrow {
+    display: none;
+  }
+
+  .mat-mdc-form-field.companies-form-field
+    .mdc-text-field--disabled
+    .mdc-line-ripple::before {
+    border-bottom-color: transparent;
+  }
+
+  .mat-form-field-appearance-fill.companies-form-field {
+    .mdc-text-field--disabled.mdc-text-field--filled {
+      background-color: transparent;
+      border: 1px solid transparent;
+    }
+
+    .mat-mdc-form-field-subscript-dynamic-size
+      .mat-mdc-form-field-hint-wrapper {
+      opacity: 0;
+    }
+  }
+}
+
+/*Remove input styles, effects for edit-mode*/
+::ng-deep
+  mat-form-field.companies-form-field.mat-focused:not(.edit-mode)
+  .mat-mdc-form-field-focus-overlay {
+  opacity: 0;
+}
+::ng-deep
+  .companies-form-field:not(.edit-mode).mat-mdc-form-field:hover
+  .mat-mdc-form-field-focus-overlay {
+  opacity: 0;
+}
+::ng-deep
+  mat-form-field.companies-form-field:not(.edit-mode)
+  .mdc-text-field--filled:not(.mdc-text-field--disabled):hover
+  .mdc-line-ripple::before {
+  border-bottom-color: transparent;
+}
+::ng-deep
+  mat-form-field.companies-form-field:not(.edit-mode)
+  .mdc-line-ripple--active::after {
+  opacity: 0;
+}
+
+::ng-deep mat-form-field.companies-form-field:not(.edit-mode) {
+  .mat-mdc-text-field-wrapper {
+    border-color: transparent;
+  }
+  textarea {
+    overflow: hidden;
+  }
+}
